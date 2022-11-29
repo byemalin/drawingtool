@@ -6,13 +6,13 @@ let slider;
 function setup() {
   //Create Canvas and Set BG Colour
   let c = createCanvas(1500, 900);
-  background(color("#0B132B"));
+  background(color("#FFFFFF"));
 
   //Create Colour Pickers
 
-  fillColorPicker = createColorPicker("#3A506B");
+  fillColorPicker = createColorPicker("#FFD25A");
   fillColorPicker.position(30, 400);
-  strokeColorPicker = createColorPicker("#1C2541");
+  strokeColorPicker = createColorPicker("#191919");
   strokeColorPicker.position(30, 480);
 
   //Create Buttons
