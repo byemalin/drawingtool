@@ -1,0 +1,28 @@
+body {
+  display: flexbox;
+  margin: 8px;
+  /* justify-content: center; */
+  text-align: center;
+  background-color: #252422;
+  /* background-color: #f2ede3; */
+  overflow: hidden;
+  position: fixed;
+}
+
+canvas {
+  width: 80% !important;
+  height: 80% !important;
+}
+
+input {
+  width: 70px;
+  height: 70px;
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+}
+
+button {
+  width: 70px;
+  height: 70px;
+}
