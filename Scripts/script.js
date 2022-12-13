@@ -19,9 +19,9 @@ function setup() {
   //Create Colour Pickers
 
   fillColorPicker = createColorPicker("#FFD25A");
-  fillColorPicker.position(30, 400);
+  fillColorPicker.position(30, 200);
   strokeColorPicker = createColorPicker("#191919");
-  strokeColorPicker.position(30, 480);
+  strokeColorPicker.position(30, 280);
 
   //Create Buttons
 
@@ -30,17 +30,17 @@ function setup() {
 
   saveBtn = createButton("Save Drawing");
   saveBtn.mousePressed(saveToFile);
-  saveBtn.position(30, 560);
+  saveBtn.position(30, 360);
   saveBtn.style('background-color', passivecolor);
 
   clearBtn = createButton("Clear");
   clearBtn.mousePressed(clearFile);
-  clearBtn.position(width + 150, 320);
+  clearBtn.position(30, 520);
   clearBtn.style('background-color', red);
 
   bgBtn = createButton("BG");
   bgBtn.mousePressed(bgFile);
-  bgBtn.position(30, 320);
+  bgBtn.position(30, 120);
   bgBtn.style('background-color', passivecolor);
 
 
@@ -48,17 +48,17 @@ function setup() {
 
   spiralBtn = createButton("Spiral");
   spiralBtn.mousePressed(spiralFile);
-  spiralBtn.position(width + 150, 400);
+  spiralBtn.position(30, 600);
   spiralBtn.style('background-color', activecolor);
 
   wavesBtn = createButton("Waves");
   wavesBtn.mousePressed(wavesFile);
-  wavesBtn.position(width + 150, 480);
+  wavesBtn.position(30, 680);
   wavesBtn.style('background-color', passivecolor);
 
   terrainBtn = createButton("Terrain");
   terrainBtn.mousePressed(terrainFile);
-  terrainBtn.position(width + 150, 560);
+  terrainBtn.position(30, 760);
   terrainBtn.style('background-color', passivecolor);
 
 
@@ -66,7 +66,7 @@ function setup() {
   //Create Slider
 
   slider = createSlider(10, 90, 40, 20);
-  slider.position(25, 250);
+  slider.position(25, 50);
   slider.style('width', '80px');
 
   //perlin draw variable setup
