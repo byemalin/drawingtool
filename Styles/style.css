@@ -1,7 +1,6 @@
 body {
   display: flexbox;
   margin: 8px;
-  /* justify-content: center; */
   text-align: center;
   background-color: #252422;
 
@@ -12,6 +11,12 @@ body {
 canvas {
   width: 80% !important;
   height: 80% !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
 }
 
 input {

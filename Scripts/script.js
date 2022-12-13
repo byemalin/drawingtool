@@ -116,8 +116,9 @@ function draw() {
     rotate(angle); //rotate each loop of the draw function
 
     //set colours of drawn squares
-    fill(fillColorPicker.color());
     stroke(strokeColorPicker.color());
+    fill(fillColorPicker.color());
+
     rect(-1 * slider_val, -1 * slider_val, slider_val * 2, slider_val * 2);
     angle += 0.1;
 
@@ -152,6 +153,7 @@ function draw() {
   if (terrain == true && mouseIsPressed == true) {
 
     noFill();
+    stroke(strokeColorPicker.color());
 
 
     translate(mouseX - 750, mouseY - 450)
@@ -169,11 +171,16 @@ function draw() {
       var x = rad * cos(ang);
       var y = rad * sin(ang);
 
-      // var r = 255 * noise(c + 10);
-      // var g = 255 * noise(c + 15);
-      // var b = 255 * noise(c + 20);
-      //stroke(r, g, b);
-      stroke(0);
+      if (keyIsPressed) {
+        var r = 255 * noise(c + 10);
+        var g = 255 * noise(c + 15);
+        var b = 255 * noise(c + 20);
+        stroke(r, g, b);
+      }
+
+
+
+      //stroke(0);
       curveVertex(x, y);
     }
     endShape(CLOSE);
