@@ -35,7 +35,7 @@ function setup() {
 
   clearBtn = createButton("Clear");
   clearBtn.mousePressed(clearFile);
-  clearBtn.position(30, 520);
+  clearBtn.position(30, 440);
   clearBtn.style('background-color', red);
 
   bgBtn = createButton("BG");
