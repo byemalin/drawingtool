@@ -5,7 +5,9 @@ let slider;
 
 var spiral = true;
 var waves = false;
-var perlin2 = false;
+var terrain = false;
+
+let c = 0;
 
 
 
@@ -24,7 +26,7 @@ function setup() {
   //Create Buttons
 
   let activecolor = color(255, 103, 0);
-  let passivecolor = color(235, 235, 235, 50);
+  let passivecolor = color(239, 239, 239);
 
   saveBtn = createButton("Save Drawing");
   saveBtn.mousePressed(saveToFile);
@@ -33,8 +35,8 @@ function setup() {
 
   clearBtn = createButton("Clear");
   clearBtn.mousePressed(clearFile);
-  clearBtn.position(width + 150, 450);
-  clearBtn.style('background-color', passivecolor);
+  clearBtn.position(width + 150, 320);
+  clearBtn.style('background-color', red);
 
   bgBtn = createButton("BG");
   bgBtn.mousePressed(bgFile);
@@ -46,13 +48,19 @@ function setup() {
 
   spiralBtn = createButton("Spiral");
   spiralBtn.mousePressed(spiralFile);
-  spiralBtn.position(30, 660);
+  spiralBtn.position(width + 150, 400);
   spiralBtn.style('background-color', activecolor);
 
   wavesBtn = createButton("Waves");
   wavesBtn.mousePressed(wavesFile);
-  wavesBtn.position(30, 760);
+  wavesBtn.position(width + 150, 480);
   wavesBtn.style('background-color', passivecolor);
+
+  terrainBtn = createButton("Terrain");
+  terrainBtn.mousePressed(terrainFile);
+  terrainBtn.position(width + 150, 560);
+  terrainBtn.style('background-color', passivecolor);
+
 
 
   //Create Slider
@@ -63,9 +71,38 @@ function setup() {
 
   //perlin draw variable setup
   t = 0;
+  c = 0;
 }
 
 function draw() {
+
+  //console.log(c);
+
+  let activecolor = color(255, 103, 0);
+  let passivecolor = color(239, 239, 239);
+
+
+  //Set active/passive colors for tool buttons 
+  if (spiral == true) {
+    spiralBtn.style('background-color', activecolor);
+
+  } else {
+    spiralBtn.style('background-color', passivecolor);
+  }
+
+  if (waves == true) {
+    wavesBtn.style('background-color', activecolor);
+
+  } else {
+    wavesBtn.style('background-color', passivecolor);
+  }
+
+  if (terrain == true) {
+    terrainBtn.style('background-color', activecolor);
+
+  } else {
+    terrainBtn.style('background-color', passivecolor);
+  }
 
   //console.log(square);
 
@@ -88,7 +125,7 @@ function draw() {
 
 
 
-  //draw function for the perlin noise prototype
+  //draw function for the waves tool
   if (mouseIsPressed && waves == true) {
 
     noFill();
@@ -108,16 +145,42 @@ function draw() {
     bezier(x1, y1, x2, y2, x3, y3, x4, y4);
 
     t += 0.005;
-
-    //clear the background every 1000 frames using mod (%) operator
-    // if (frameCount % 1000 == 0) {
-    //   background(255)
-    // }
   }
 
-  if (spiral == "true") {
-    console.log('Square is active');
-    rect(40, 40, 50);
+  //Draw function for the terrain tool
+
+  if (terrain == true && mouseIsPressed == true) {
+
+    noFill();
+
+
+    translate(mouseX - 750, mouseY - 450)
+    var s = width * noise(c + 0.01);
+    var u = height * noise(c - 0.01);
+    translate(s, u)
+
+    beginShape();
+
+
+    for (var i = 0; i < 200; i++) {
+      // make above and below value the sae to reset
+      var ang = map(i, 0, 200, 0, TWO_PI);
+      var rad = 600 * noise(i * 0.01, t * 0.005);
+      var x = rad * cos(ang);
+      var y = rad * sin(ang);
+
+      // var r = 255 * noise(c + 10);
+      // var g = 255 * noise(c + 15);
+      // var b = 255 * noise(c + 20);
+      //stroke(r, g, b);
+      stroke(0);
+      curveVertex(x, y);
+    }
+    endShape(CLOSE);
+
+    t += 1;
+    c += 0.001
+
   }
 
 
@@ -137,32 +200,39 @@ function bgFile() {
   background(color(random(255), random(255), random(255)));
 }
 
-function spiralFile() {
-  let activecolor = color(255, 103, 0);
-  let passivecolor = color(235, 235, 235, 50);
 
+
+function spiralFile() {
   if (spiral == true) {
     spiral = false;
-    spiralBtn.style('background-color', passivecolor);
 
   } else {
     spiral = true;
-    wavesFile();
-    spiralBtn.style('background-color', activecolor);
+    waves = false;
+    terrain = false;
   }
 }
 
 function wavesFile() {
-  let activecolor = color(255, 103, 0);
-  let passivecolor = color(235, 235, 235, 50);
 
   if (waves == true) {
     waves = false;
-    wavesBtn.style('background-color', passivecolor);
 
   } else {
     waves = true;
-    spiralFile();
-    wavesBtn.style('background-color', activecolor);
+    spiral = false;
+    terrain = false;
+  }
+}
+
+function terrainFile() {
+
+  if (terrain == true) {
+    terrain = false;
+
+  } else {
+    terrain = true;
+    spiral = false;
+    waves = false;
   }
 }
