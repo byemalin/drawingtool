@@ -153,13 +153,21 @@ function draw() {
   if (terrain == true && mouseIsPressed == true) {
 
     noFill();
+    //fill(fillColorPicker.color());
     stroke(strokeColorPicker.color());
 
 
-    translate(mouseX - 750, mouseY - 450)
-    var s = width * noise(c + 0.01);
-    var u = height * noise(c - 0.01);
-    translate(s, u)
+
+
+
+    //translate(mouseX - 750, mouseY - 450);
+    //var s = width * noise(c + 0.01);
+    //var u = height * noise(c - 0.01);
+    //translate(s, u)
+
+    translate(mouseX, mouseY);
+
+
 
     beginShape();
 
@@ -175,7 +183,8 @@ function draw() {
         var r = 255 * noise(c + 10);
         var g = 255 * noise(c + 15);
         var b = 255 * noise(c + 20);
-        stroke(r, g, b);
+        //stroke(r, g, b);
+        fill(r, g, b);
       }
 
 
