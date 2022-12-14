@@ -106,7 +106,7 @@ function draw() {
 
   //console.log(square);
 
-  if (mouseIsPressed && spiral == true) {
+  if (mouseIsPressed && spiral == true && mouseX > 0) {
 
     //set slider value to local variable
     let slider_val = slider.value();
@@ -127,7 +127,7 @@ function draw() {
 
 
   //draw function for the waves tool
-  if (mouseIsPressed && waves == true) {
+  if (mouseIsPressed && waves == true && mouseX > 0) {
 
     noFill();
     stroke(strokeColorPicker.color());
@@ -150,7 +150,7 @@ function draw() {
 
   //Draw function for the terrain tool
 
-  if (terrain == true && mouseIsPressed == true) {
+  if (terrain == true && mouseIsPressed == true && mouseX > 0) {
 
     noFill();
     //fill(fillColorPicker.color());
