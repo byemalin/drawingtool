@@ -219,36 +219,36 @@ function bgFile() {
 
 
 function spiralFile() {
-  if (spiral == true) {
-    spiral = false;
+  // if (spiral == true) {
+  //   spiral = false;
 
-  } else {
-    spiral = true;
-    waves = false;
-    terrain = false;
-  }
+  // } else {
+  spiral = true;
+  waves = false;
+  terrain = false;
+  //}
 }
 
 function wavesFile() {
 
-  if (waves == true) {
-    waves = false;
+  // if (waves == true) {
+  //   waves = false;
 
-  } else {
-    waves = true;
-    spiral = false;
-    terrain = false;
-  }
+  // } else {
+  waves = true;
+  spiral = false;
+  terrain = false;
+  //}
 }
 
 function terrainFile() {
 
-  if (terrain == true) {
-    terrain = false;
+  // if (terrain == true) {
+  //   terrain = false;
 
-  } else {
-    terrain = true;
-    spiral = false;
-    waves = false;
-  }
+  // } else {
+  terrain = true;
+  spiral = false;
+  waves = false;
+  //}
 }
